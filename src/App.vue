@@ -8,7 +8,9 @@
     />
     <result v-else :results="results" :totalCorrect="totalCorrect" />
 
-    <button type="button" class="reset-btn">Reset</button>
+    <button type="button" class="reset-btn" @click.prevent="resetFn">
+      Reset
+    </button>
   </div>
 </template>
 
@@ -109,6 +111,10 @@ export default {
         this.totalCorrect++;
       }
       this.questionsAnswered++;
+    },
+    resetFn() {
+      this.questionsAnswered = 0;
+      this.totalCorrect = 0;
     },
   },
 };
