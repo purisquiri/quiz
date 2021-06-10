@@ -94,7 +94,7 @@ body {
   transition: 0.4s linear all;
   text-align: center;
 }
-.fade-enter {
+.fade-enter-from {
   opacity: 0;
 }
 .fade-enter-active {
