@@ -16,10 +16,11 @@
         :key="question.q"
         v-show="questionsAnswered === qi"
       >
+      
         <div class="question">{{ question.q }}</div>
         <div
           class="answers"
-          v-for="answer in question.answers"
+          v-for="answer in shuffleAnswer(question.answers)"
           :key="answer.text"
           @click.prevent="selectAnswer(answer.is_correct)"
         >
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+import shuffle from 'lodash.shuffle';
 export default {
   props: ["questions", "questionsAnswered"],
   emit: ["question-answered"],
@@ -38,6 +40,9 @@ export default {
     selectAnswer(is_correct) {
       this.$emit("question-answered", is_correct);
     },
+    shuffleAnswer(val) {
+      return shuffle(val)
+    }
   },
 };
 </script>
